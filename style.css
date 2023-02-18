@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+/* Configuración del color de la barra de progreso. */
+:root {
+    --line-border-fill: #3498db;
+    --line-border-empty: #383838;
+
+}
+
+/* Un reinicio de CSS. Se asegura de que el relleno y el borde de un elemento estén incluidos en el
+ancho y alto total de ese elemento. */
+* {
+    box-sizing: border-box;
+}
+
+/* Establecer el color de fondo, la fuente y la altura del cuerpo. */
+body {
+    background-color: #1f1f1f;
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+/* Centrar el texto. */
+.conaiter {
+text-align: center;
+}
+
+/* Configuración del ancho de la barra de progreso. */
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 350px;
+}
+
+/* Creando una línea que es del mismo color que el fondo. */
+.progress-container::before {
+    content: '';
+    background-color: var(--line-border-empty);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    z-index: -1;
+}
+
+/* El CSS para la barra de progreso. */
+.progress {
+    background-color: var(--line-border-fill);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: (translateY(-50));
+    height: 4px;
+    width: 0%;
+    z-index: -1;
+    transition: 0.4s ease;
+}
+
+/* El CSS para los círculos. */
+.circle {
+    background-color: #1f1f1f;
+    color: #e2e2e2;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--line-border-empty);
+    transition:  0.4s ease;
+}
+
+/* Cambiar el color del borde del círculo al color de la barra de progreso. */
+.circle.active {
+    border-color: var(--line-border-fill);
+}
+
+/* El CSS para los botones. */
+.btn {
+    background-color: var(--line-border-fill);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 30px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+/* Hace que el botón sea más pequeño cuando haces clic en él. */
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Eliminando el contorno que aparece al hacer clic en el botón. */
+.btn:focus {
+    outline: 0;
+}
+
+/* Haciendo el botón deshabilitado. */
+.btn:disabled {
+    background-color:  var(--line-border-empty);
+    cursor: not-allowed;
+}
